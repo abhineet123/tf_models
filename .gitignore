@@ -1,3 +1,4 @@
+gitu.bat
 research/object_detection/protos/*.py
 research/object_detection/test_ckpt/
 # Byte-compiled / optimized / DLL files

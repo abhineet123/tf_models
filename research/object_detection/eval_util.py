@@ -422,6 +422,7 @@ def repeated_checkpoint_run(tensor_dict,
                                                   master, save_graph,
                                                   save_graph_dir,
                                                   losses_dict=losses_dict)
+      print('repeated_checkpoint_run {} :: metrics: ', number_of_evaluations, metrics)
       write_metrics(metrics, global_step, summary_dir)
     number_of_evaluations += 1
 

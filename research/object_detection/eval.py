@@ -127,8 +127,9 @@ def main(unused_argv):
   if FLAGS.run_once:
     eval_config.max_evals = 1
 
-  evaluator.evaluate(create_input_dict_fn, model_fn, eval_config, categories,
+  metrics = evaluator.evaluate(create_input_dict_fn, model_fn, eval_config, categories,
                      FLAGS.checkpoint_dir, FLAGS.eval_dir)
+  print('main :: metrics: ', metrics)
 
 
 if __name__ == '__main__':
