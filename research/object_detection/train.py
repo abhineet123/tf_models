@@ -58,6 +58,8 @@ flags = tf.app.flags
 flags.DEFINE_string('master', '', 'Name of the TensorFlow master to use.')
 flags.DEFINE_integer('task', 0, 'task id')
 flags.DEFINE_integer('num_clones', 1, 'Number of clones to deploy per worker.')
+flags.DEFINE_boolean('allow_memory_growth', True,'allow_memory_growth')
+
 flags.DEFINE_boolean('clone_on_cpu', False,
                      'Force clones to be deployed on CPU.  Note that even if '
                      'set to False (allowing ops to run on gpu), some ops may '
@@ -160,7 +162,8 @@ def main(_):
 
   trainer.train(create_input_dict_fn, model_fn, train_config, master, task,
                 FLAGS.num_clones, worker_replicas, FLAGS.clone_on_cpu, ps_tasks,
-                worker_job_name, is_chief, FLAGS.train_dir)
+                worker_job_name, is_chief, FLAGS.train_dir,
+                allow_memory_growth=FLAGS.allow_memory_growth)
 
 
 if __name__ == '__main__':

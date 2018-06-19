@@ -185,7 +185,7 @@ def _create_losses(input_queue, create_model_fn, train_config):
 
 def train(create_tensor_dict_fn, create_model_fn, train_config, master, task,
           num_clones, worker_replicas, clone_on_cpu, ps_tasks, worker_job_name,
-          is_chief, train_dir, graph_hook_fn=None):
+          is_chief, train_dir, graph_hook_fn=None, allow_memory_growth=False):
   """Training function for detection models.
 
   Args:
@@ -348,6 +348,7 @@ def train(create_tensor_dict_fn, create_model_fn, train_config, master, task,
     # Soft placement allows placing on CPU ops without GPU implementation.
     session_config = tf.ConfigProto(allow_soft_placement=True,
                                     log_device_placement=False)
+    session_config.gpu_options.allow_growth = allow_memory_growth
 
     # Save checkpoints regularly.
     keep_checkpoint_every_n_hours = train_config.keep_checkpoint_every_n_hours

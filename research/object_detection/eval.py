@@ -76,7 +76,12 @@ flags.DEFINE_string('model_config_path', '',
 flags.DEFINE_boolean('run_once', False, 'Option to only run a single pass of '
                                         'evaluation. Overrides the `max_evals` parameter in the '
                                         'provided config.')
+flags.DEFINE_integer('num_examples', 0, 'num_examples to override that in the config file')
+
 FLAGS = flags.FLAGS
+
+
+
 
 
 def main(unused_argv):
@@ -125,6 +130,9 @@ def main(unused_argv):
 
     if FLAGS.run_once:
         eval_config.max_evals = 1
+
+    if FLAGS.num_examples:
+        eval_config.num_examples = FLAGS.num_examples
 
     metrics = evaluator.evaluate(create_input_dict_fn, model_fn, eval_config, categories,
                                  FLAGS.checkpoint_dir, FLAGS.eval_dir)
