@@ -69,7 +69,7 @@ flags.DEFINE_integer('worker_replicas', 1, 'Number of worker+trainer '
 flags.DEFINE_integer('ps_tasks', 0,
                      'Number of parameter server tasks. If None, does not use '
                      'a parameter server.')
-flags.DEFINE_integer('max_ckpt_to_keep', 0,
+flags.DEFINE_integer('max_ckpt_to_keep', 1,
                      'Number of checkpoints to keep.')
 flags.DEFINE_string('train_dir', '',
                     'Directory to save the checkpoints and training summaries.')
