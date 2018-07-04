@@ -69,6 +69,8 @@ flags.DEFINE_integer('worker_replicas', 1, 'Number of worker+trainer '
 flags.DEFINE_integer('ps_tasks', 0,
                      'Number of parameter server tasks. If None, does not use '
                      'a parameter server.')
+flags.DEFINE_integer('max_ckpt_to_keep', 0,
+                     'Number of checkpoints to keep.')
 flags.DEFINE_string('train_dir', '',
                     'Directory to save the checkpoints and training summaries.')
 
@@ -163,7 +165,8 @@ def main(_):
   trainer.train(create_input_dict_fn, model_fn, train_config, master, task,
                 FLAGS.num_clones, worker_replicas, FLAGS.clone_on_cpu, ps_tasks,
                 worker_job_name, is_chief, FLAGS.train_dir,
-                allow_memory_growth=FLAGS.allow_memory_growth)
+                allow_memory_growth=FLAGS.allow_memory_growth,
+                max_ckpt_to_keep=FLAGS.max_ckpt_to_keep)
 
 
 if __name__ == '__main__':
