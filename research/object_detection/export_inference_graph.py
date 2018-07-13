@@ -152,11 +152,11 @@ def main(_):
         except:
             inf_dir = 'inference'
         output_directory = os.path.join(os.path.dirname(trained_checkpoint_prefix), inf_dir)
-    print('\nReading checkpoint from: {}'.format(trained_checkpoint_prefix))
-    print('Writing inference graph to: {}\n'.format(output_directory))
     exporter.export_inference_graph(FLAGS.input_type, pipeline_config,
                                     trained_checkpoint_prefix,
                                     output_directory, input_shape)
+    print('\nGot checkpoint from: {}'.format(trained_checkpoint_prefix))
+    print('Exported inference graph to: {}\n'.format(output_directory))
 
 if __name__ == '__main__':
     tf.app.run()
