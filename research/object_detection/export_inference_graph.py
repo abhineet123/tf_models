@@ -118,13 +118,13 @@ flags.DEFINE_string('pipeline_config_path', None,
 flags.DEFINE_string('trained_checkpoint_prefix', None,
                     'Path to trained checkpoint, typically of the form '
                     'path/to/model.ckpt')
-flags.DEFINE_string('output_directory', None, 'Path to write outputs.')
+flags.DEFINE_string('output_directory', '', 'Path to write outputs.')
 flags.DEFINE_string('config_override', '',
                     'pipeline_pb2.TrainEvalPipelineConfig '
                     'text proto to override pipeline_config_path.')
 tf.app.flags.mark_flag_as_required('pipeline_config_path')
 tf.app.flags.mark_flag_as_required('trained_checkpoint_prefix')
-tf.app.flags.mark_flag_as_required('output_directory')
+# tf.app.flags.mark_flag_as_required('output_directory')
 FLAGS = flags.FLAGS
 
 
