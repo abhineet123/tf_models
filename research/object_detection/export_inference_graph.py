@@ -143,7 +143,7 @@ def main(_):
 
     trained_checkpoint_prefix = FLAGS.trained_checkpoint_prefix
     output_directory = FLAGS.output_directory
-    if trained_checkpoint_prefix.endswith('/'):
+    if os.path.isdir(trained_checkpoint_prefix):
         trained_checkpoint_prefix = tf.train.latest_checkpoint(trained_checkpoint_prefix)
     if not output_directory:
         ckpt_name = os.path.basename(trained_checkpoint_prefix)
