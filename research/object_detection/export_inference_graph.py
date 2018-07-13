@@ -155,7 +155,7 @@ def main(_):
     exporter.export_inference_graph(FLAGS.input_type, pipeline_config,
                                     trained_checkpoint_prefix,
                                     output_directory, input_shape)
-    print('\nGot checkpoint from: {}'.format(trained_checkpoint_prefix))
+    print('\nImported checkpoint from: {}'.format(trained_checkpoint_prefix))
     print('Exported inference graph to: {}\n'.format(output_directory))
 
 if __name__ == '__main__':
