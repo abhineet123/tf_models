@@ -1,5 +1,6 @@
 gitu.bat
 research/object_detection/protos/*.py
+!research/object_detection/protos/__init__.py
 research/object_detection/test_ckpt/
 # Byte-compiled / optimized / DLL files
 __pycache__/
